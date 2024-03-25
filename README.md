@@ -224,6 +224,7 @@ E com o teste de integração, testando a integração entre as camadas de Appli
 │   │   │   │   │   ├── controllers
 │   │   │   │   │   ├── mappers
 │   │   │   │   ├── domain
+│   │   │   │   │   ├── contracts
 │   │   │   │   │   ├── exceptions
 │   │   │   │   │   ├── models
 │   │   │   │   │   ├── services
