@@ -1,5 +1,6 @@
 package com.mobiauto.revenda.domain.usecases.revenda;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
@@ -13,12 +14,16 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.mobiauto.revenda.data.dtos.revenda.CreateRevendaDto;
+import com.mobiauto.revenda.data.repositories.revenda.CreateRevendaRepository;
 import com.mobiauto.revenda.data.repositories.revenda.FindByCnpjRepository;
 import com.mobiauto.revenda.domain.exceptions.RegistredException;
 import com.mobiauto.revenda.domain.models.revenda.RevendaModel;
 import com.mobiauto.revenda.domain.usecases.CreateRevendaUseCase;
 
 class CreateRevendaTest {
+
+  @Mock
+  private CreateRevendaRepository createRevendaRepository;
 
   @Mock
   private FindByCnpjRepository findByCnpjRepository;
@@ -41,5 +46,18 @@ class CreateRevendaTest {
     assertThrows(RegistredException.class, () -> {
       createRevendaUseCase.create(new CreateRevendaDto("any_nome", "123456789"));
     });
+  }
+
+  @Test
+  @DisplayName("Deve criar uma revenda")
+  void deveCriarUmaRevenda() throws RegistredException {
+    RevendaModel revenda = new RevendaModel("123456789", "any_nome");
+    Optional<RevendaModel> optionalRevenda = Optional.empty();
+    when(findByCnpjRepository.findByCnpj("123456789")).thenReturn(optionalRevenda);
+    when(createRevendaRepository.create(new CreateRevendaDto("any_nome", "123456789"))).thenReturn(revenda);
+
+    RevendaModel revendaCriada = createRevendaUseCase.create(new CreateRevendaDto("any_nome", "123456789"));
+
+    assertEquals(revenda, revendaCriada);
   }
 }
