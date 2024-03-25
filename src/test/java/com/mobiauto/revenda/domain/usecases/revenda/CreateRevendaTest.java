@@ -2,6 +2,7 @@ package com.mobiauto.revenda.domain.usecases.revenda;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
@@ -59,5 +60,16 @@ class CreateRevendaTest {
     RevendaModel revendaCriada = createRevendaUseCase.create(new CreateRevendaDto("any_nome", "123456789"));
 
     assertEquals(revenda, revendaCriada);
+  }
+
+  @Test
+  @DisplayName("Deve chamar findByCnpjRepository com o cnpj correto")
+  void deveChamarFindByCnpjRepositoryComOCnpjCorreto() throws RegistredException {
+
+    createRevendaUseCase.create(new CreateRevendaDto("any_nome", "123456789"));
+
+    // Verifica se o método findByCnpj foi chamado com o cnpj correto
+    verify(findByCnpjRepository).findByCnpj("123456789");
+
   }
 }
