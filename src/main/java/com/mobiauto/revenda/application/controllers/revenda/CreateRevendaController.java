@@ -17,7 +17,10 @@ public class CreateRevendaController implements Controllers<CreateRevendaRequest
       if(body.get().cnpj() == null) {
         return HttpResponse.badRequest().body("CNPJ não pode ser vazio");
       }
-      
+
+      if (body.get().nome() == null) {
+        return HttpResponse.badRequest().body("Nome não pode ser vazio");
+      }
       return HttpResponse.ok();
     } catch (Exception e) {
       return HttpResponse.internalServerError().body("Erro interno no servidor");

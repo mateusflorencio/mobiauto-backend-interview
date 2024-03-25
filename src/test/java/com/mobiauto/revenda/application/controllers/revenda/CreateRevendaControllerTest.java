@@ -36,4 +36,14 @@ class CreateRevendaControllerTest {
     assertEquals("CNPJ não pode ser vazio", response.getBody());
     assertEquals(400, response.getStatus());
   }
+
+  @Test
+  @DisplayName("Deve retornar um status 400 caso nome seja nulo")
+  void deveRetornarStatus400PorNomeNulo() {
+    CreateRevendaRequest createRevendaRequest = new CreateRevendaRequest("cnpj", null);
+    HttpRequest<CreateRevendaRequest> request = new HttpRequest(createRevendaRequest);
+    HttpResponse response = createRevendaController.handle(request);
+    assertEquals("Nome não pode ser vazio", response.getBody());
+    assertEquals(400, response.getStatus());
+  }
 }
