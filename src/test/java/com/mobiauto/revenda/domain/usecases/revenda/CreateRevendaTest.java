@@ -72,4 +72,14 @@ class CreateRevendaTest {
     verify(findByCnpjRepository).findByCnpj("123456789");
 
   }
+
+  @Test
+  @DisplayName("Deve chamar createRevendaRepository com o dto correto")
+  void deveChamarCreateRevendaRepositoryComODtoCorreto() throws RegistredException {
+    CreateRevendaDto createRevendaDto = new CreateRevendaDto("any_nome", "123456789");
+
+    createRevendaUseCase.create(createRevendaDto);
+
+    verify(createRevendaRepository).create(createRevendaDto);
+  }
 }
