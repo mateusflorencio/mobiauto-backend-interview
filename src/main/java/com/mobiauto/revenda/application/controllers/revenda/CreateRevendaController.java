@@ -35,6 +35,9 @@ public class CreateRevendaController implements Controllers<CreateRevendaRequest
 
       return HttpResponse.created().body(createRevenda.create(createRevendaDto));
     } catch (Exception e) {
+      if (e.getMessage().equals("CNPJ já cadastrado")) {
+        return HttpResponse.badRequest().body("CNPJ já cadastrado");
+      }
       return HttpResponse.internalServerError().body("Erro interno no servidor");
     }
   }
