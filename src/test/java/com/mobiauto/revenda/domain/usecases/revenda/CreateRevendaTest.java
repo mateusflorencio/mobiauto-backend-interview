@@ -37,7 +37,7 @@ class CreateRevendaTest {
   }
 
   @Test
-  @DisplayName("Deve lançar uma exceção caso a revenda já esteja cadastrada")
+  @DisplayName("Deve lançar uma exceção caso o CNPJ já esteja cadastrado")
   void deveLancarUmErroCasoARevendaJaEstejaCadastrada() {
     RevendaModel revenda = new RevendaModel("123456789", "any_nome");
     Optional<RevendaModel> optionalRevenda = Optional.of(revenda);

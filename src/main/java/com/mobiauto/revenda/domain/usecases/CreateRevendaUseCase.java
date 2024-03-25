@@ -24,7 +24,7 @@ public class CreateRevendaUseCase implements CreateRevenda{
         Optional<RevendaModel> revenda = findByCnpjRepository.findByCnpj(createRevendaDto.cnpj());
 
         if(revenda.isPresent()) {
-            throw new RegistredException("Revenda já cadastrada");
+            throw new RegistredException("CNPJ já cadastrado");
         }
 
         return createRevendaRepository.create(createRevendaDto);
