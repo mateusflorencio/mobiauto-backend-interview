@@ -19,7 +19,7 @@ public class CreateRevendaController implements Controllers<CreateRevendaRequest
 
     try {
       Optional<CreateRevendaRequest> body = request.getBody();
-      if (Optional.ofNullable(body).isEmpty()) {
+      if (Optional.ofNullable(body).isEmpty() || !body.isPresent()) {
         return HttpResponse.badRequest().body("Corpo da requisição não pode ser vazio");
       }
 
