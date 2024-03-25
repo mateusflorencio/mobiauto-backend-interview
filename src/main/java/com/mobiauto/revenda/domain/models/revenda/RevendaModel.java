@@ -12,10 +12,11 @@ import lombok.Setter;
 public class RevendaModel {
   private Number id;
   private String cnpj;
-  private String email;
+  private String nome;
 
-  public RevendaModel(String cnpj, String email) {
+  public RevendaModel(String cnpj, String nome, Number id) {
     this.cnpj = cnpj;
-    this.email = email;
+    this.nome = nome;
+    this.id = id;
   }
 }
