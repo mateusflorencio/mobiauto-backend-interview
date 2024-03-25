@@ -13,6 +13,11 @@ public class CreateRevendaController implements Controllers<CreateRevendaRequest
       if(Optional.ofNullable(body).isEmpty()) {
         return HttpResponse.badRequest().body("Corpo da requisição não pode ser vazio");
       }
+
+      if(body.get().cnpj() == null) {
+        return HttpResponse.badRequest().body("CNPJ não pode ser vazio");
+      }
+      
       return HttpResponse.ok();
     } catch (Exception e) {
       return HttpResponse.internalServerError().body("Erro interno no servidor");
