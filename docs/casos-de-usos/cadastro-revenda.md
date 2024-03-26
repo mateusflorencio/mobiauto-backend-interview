@@ -10,17 +10,17 @@ Sem pré-condições
 
 **Fluxo Básico:**
 
-1. É enviado uma requisição para o backend com os dados da revenda, como nome e cnpj.
-2. Os campos são obrigatórios
-3. O backend valida os dados, como se o cnpj é válido.
-4. O backend salva os dados no banco de dados.
-5. O backend retorna uma resposta de sucesso.
+1. 🟩 É enviado uma requisição para o backend com os dados da revenda, como nome e cnpj.
+2. 🟩 Os campos são obrigatórios
+3. 🟩 O backend valida os dados, como se o cnpj é válido.
+4. 🟩 O backend salva os dados no banco de dados.
+5. 🟩 O backend retorna uma resposta de sucesso.
 
 **Fluxo Alternativo:**
 
-1. O backend valida os dados e encontra um erro.
-2. O backend retorna uma resposta de erro.
-3. O fluxo é interrompido.
+1. 🟩 O backend valida os dados e encontra um erro.
+2. 🟩 O backend retorna uma resposta de erro.
+3. 🟩 O fluxo é interrompido.
 
 **Pós-condições:**
 

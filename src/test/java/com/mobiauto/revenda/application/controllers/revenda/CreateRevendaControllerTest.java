@@ -18,6 +18,7 @@ import com.mobiauto.revenda.domain.contracts.revenda.CreateRevenda;
 import com.mobiauto.revenda.domain.exceptions.RegistredException;
 import com.mobiauto.revenda.domain.models.revenda.RevendaModel;
 
+// TODO: Verificar porque esta retornando erro duas vezes nos testes de validação
 class CreateRevendaControllerTest {
 
   @Mock
