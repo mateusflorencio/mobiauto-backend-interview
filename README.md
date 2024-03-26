@@ -20,6 +20,8 @@ backend em Java
 
 🔹[Rodando o Back End (servidor)](#rodando-o-back-end-servidor)
 
+🔹[Rotas da API](#rotas-da-api)
+
 🔹[Como rodas os testes](#como-rodas-os-testes)
 
 🔹[Banco de Dados](#banco-de-dados)
@@ -141,6 +143,16 @@ $ mvn clean install
 $ docker-compose up
 
 # O servidor inciará na porta:8080 - acesse http://localhost:8080
+
+```
+
+## Rotas da API
+
+Você pode verificar as rotas da API acessando a documentação do Swagger, acesse:
+
+```bash
+
+http://localhost:8080/swagger-ui.html
 
 ```
 
