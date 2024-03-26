@@ -11,8 +11,10 @@ import org.springframework.web.servlet.function.ServerResponse;
 
 import com.mobiauto.revenda.application.contracts.HttpRequest;
 import com.mobiauto.revenda.application.contracts.HttpResponse;
+import com.mobiauto.revenda.application.contracts.Validations;
 import com.mobiauto.revenda.application.controllers.revenda.CreateRevendaController;
 import com.mobiauto.revenda.application.controllers.revenda.CreateRevendaRequest;
+import com.mobiauto.revenda.application.validations.SampleValidation;
 import com.mobiauto.revenda.data.repositories.revenda.CreateRevendaRepository;
 import com.mobiauto.revenda.data.repositories.revenda.FindByCnpjRepository;
 import com.mobiauto.revenda.domain.models.revenda.RevendaModel;
@@ -55,8 +57,13 @@ public class CreateRevenda {
   }
 
   @Bean
-  CreateRevendaController createRevendaController(CreateRevendaUseCase createRevendaUseCase) {
-    return new CreateRevendaController(createRevendaUseCase);
+  Validations validations() {
+    return new SampleValidation();
+  }
+
+  @Bean
+  CreateRevendaController createRevendaController(CreateRevendaUseCase createRevendaUseCase, Validations validations) {
+    return new CreateRevendaController(createRevendaUseCase, validations);
   }
 
   @Bean
